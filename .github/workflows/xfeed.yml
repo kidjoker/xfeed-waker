@@ -1,0 +1,21 @@
+name: xfeed round
+
+on:
+  schedule:
+    - cron: "7 * * * *"      # :07 every hour, backup for box's own :00 run; GitHub may delay
+  workflow_dispatch: {}       # "Run workflow" button for manual tests
+
+concurrency:
+  group: xfeed
+  cancel-in-progress: false   # never overlap two rounds
+
+jobs:
+  round:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wake box and run one round
+        env:
+          BOX_TOKEN: ${{ secrets.BOX_TOKEN }}
+        run: python3 wake_box.py
