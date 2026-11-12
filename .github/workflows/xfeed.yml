@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "7 * * * *"      # :07 every hour (UTC), backup for box's own :00 run; GitHub may delay or drop runs
   workflow_dispatch: {}       # "Run workflow" button for manual tests
+  repository_dispatch:        # external pinger (e.g. cron-job.org) POSTs {"event_type":"xfeed"}
+    types: [xfeed]
 
 concurrency:
   group: xfeed
