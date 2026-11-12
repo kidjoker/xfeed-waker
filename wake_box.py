@@ -53,7 +53,6 @@ def shell(cmd, timeout_s=60):
     if BOX: args["box"] = BOX
     res = rpc("tools/call", {"name": "shell", "arguments": args})
     text = "".join(c.get("text", "") for c in res.get("content", []) if c.get("type") == "text")
-    if res.get("isError"): raise RuntimeError("shell error: " + text[:300])
     return text.strip()
 
 def main():
