@@ -2,7 +2,7 @@ name: xfeed round
 
 on:
   schedule:
-    - cron: "7 * * * *"      # :07 every hour, backup for box's own :00 run; GitHub may delay
+    - cron: "7 * * * *"      # :07 every hour (UTC), backup for box's own :00 run; GitHub may delay or drop runs
   workflow_dispatch: {}       # "Run workflow" button for manual tests
 
 concurrency:
