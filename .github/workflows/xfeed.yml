@@ -14,7 +14,7 @@ concurrency:
 jobs:
   round:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - name: Wake box and run one round
